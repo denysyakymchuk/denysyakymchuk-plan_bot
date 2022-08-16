@@ -60,6 +60,19 @@ async def text(message: types.Message):
 
     elif message.text == 'key/worddenys':
         x = find_time()
-        await x.thrt_f()
+        if await x.chek_stan() == 1:
+            await bot.send_message(897892225, "1")
+            await x.thrt_f()
+        else:
+            await bot.send_message(897892225, "0")
+
+    elif message.text == "change1":
+        c = find_time()
+        await c.add_stan(number=1)
+
+    elif message.text == "change0":
+        k = find_time()
+        await k.add_stan(number=0)
+
 
 executor.start_polling(dp, skip_updates=True)

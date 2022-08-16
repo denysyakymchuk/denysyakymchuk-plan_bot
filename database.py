@@ -69,37 +69,40 @@ class find_time():
             wremia = str(datetime.datetime.now())
             wremia = wremia[11:16]
 
-            if str(wremia) == '17:00':
+            if str(wremia) == '19:00':
                 await self.timing()
 
+    async def chek_stan(self):
+        with self.connection:
+            return self.cursor.execute('''SELECT `stan` FROM `plan_table_bot` WHERE `id` LIKE 897892225 ''')
+
+    async def add_stan(self, number):
+        with self.connection:
+            self.cursor.execute(f'''UPDATE plan_table_bot SET stan = '{number}' WHERE id = 897892225''')
+
+
     def start_user(self, id_user):
-        try:
+        with self.connection:
+            self.cursor.execute('''SELECT `id` FROM `plan_table_bot`''')
+            a = self.cursor.fetchall()
+
+        if str(a) == "[]":
             with self.connection:
-                self.cursor.execute('''SELECT `id` FROM `plan_table_bot`''')
-                a = self.cursor.fetchall()
-
-            if a == 0:
-                with self.connection:
-                    self.cursor.execute(f'''INSERT INTO `plan_table_bot` (id) VALUES ({id_user})''')
-            else:
-                counter = 0
-
-                for i in a:
-                    i = re.sub(r'([()]*)', '', str(i))
-                    i = re.sub(r'([,]*)', '', str(i))
-                    i = re.sub(r"([']*)", "", str(i))
-                    i = re.sub(r'([;])', '\n', str(i))
-                    if str(id_user) == str(i):
-                        break
+                self.cursor.execute(f'''INSERT INTO `plan_table_bot` (id) VALUES ({id_user})''')
+        else:
+            counter = 0
+            id_user = str(id_user)
+            id_user = str("("+id_user+",)")
+            for i in a:
+                if str(id_user) == str(i):
+                    break
+                else:
+                    counter += 1
+                    if len(a) == int(counter):
+                        with self.connection:
+                            self.cursor.execute(f'''INSERT INTO `plan_table_bot` (id) VALUES ({id_user})''')
                     else:
-                        counter += 1
-                        if len(a) == int(counter):
-                            with self.connection:
-                                self.cursor.execute('''INSERT INTO `plan_table_bot` (id) VALUES (%s)''', id_user)
-                        else:
-                            pass
-        finally:
-            self.connection.commit()
+                        pass
 
     def add_user(self, id_user, message):
         try:
