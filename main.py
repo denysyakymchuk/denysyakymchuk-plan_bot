@@ -14,7 +14,7 @@ statefile.register_handlers_admin2(dp)
 
 @dp.message_handler(commands=['start'])
 async def start_command(message: types.Message):
-    await bot.send_message(message.chat.id, 'Привіт, ми з України!🇺🇦👋\n\nЯ твій електронний розклад!\nМене запрограмували записувать та нагадувати розклад о 19:00 та 07:00. Як це вмикнути?\n\nНалаштування🛠 -> відправ 1.'
+    await bot.send_message(message.chat.id, 'Привіт, ми з України!🇺🇦👋\n\nЯ твій електронний розклад!\nМене запрограмували записувать та нагадувати розклад о 19:00. Як це вмикнути?\n\nНалаштування🛠 -> відправ 1.'
                                             '\n\nЩоб додати розклад: Почати🎲 -> 📑Записати розклад -> почати заповнювати\n\nДля перевірити розкладу в будь-яку хвилину існує команда /see', reply_markup=Main)
     id_user = message.from_user.id
     db_add_user.start_user(id_user)
@@ -59,7 +59,7 @@ async def text(message: types.Message):
     elif message.text == '❌Cancel❗':
         await bot.send_message(message.chat.id, '🆗OK', reply_markup=Main)
 
-    elif message.text == 'parol':
+    elif message.text == 'po12.hqw34pn':
         x = find_time()
         if str(await x.chek_stan()) == '(1,)':
             await bot.send_message(897892225, "1 przed wejściem")

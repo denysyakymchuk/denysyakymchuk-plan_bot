@@ -69,13 +69,12 @@ class find_time():
             wremia = str(datetime.datetime.now())
             wremia = wremia[11:16]
 
-            if str(wremia) == '19:00' or '07:00':
+            if str(wremia) == '19:00':
                 await self.timing()
 
     async def chek_stan(self):
         with self.connection:
             a = self.cursor.execute('''SELECT `stan` FROM `plan_table_bot` WHERE `id` LIKE 897892225 ''').fetchone()
-            print(a)
             return a
 
     async def add_stan(self, number):
