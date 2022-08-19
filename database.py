@@ -69,12 +69,14 @@ class find_time():
             wremia = str(datetime.datetime.now())
             wremia = wremia[11:16]
 
-            if str(wremia) == '19:00':
+            if str(wremia) == '19:00' or '07:00':
                 await self.timing()
 
     async def chek_stan(self):
         with self.connection:
-            return self.cursor.execute('''SELECT `stan` FROM `plan_table_bot` WHERE `id` LIKE 897892225 ''')
+            a = self.cursor.execute('''SELECT `stan` FROM `plan_table_bot` WHERE `id` LIKE 897892225 ''').fetchone()
+            print(a)
+            return a
 
     async def add_stan(self, number):
         with self.connection:
@@ -92,9 +94,9 @@ class find_time():
         else:
             counter = 0
             id_user = str(id_user)
-            id_user = str("("+id_user+",)")
+            id_user_loc = str("("+id_user+",)")
             for i in a:
-                if str(id_user) == str(i):
+                if str(id_user_loc) == str(i):
                     break
                 else:
                     counter += 1
@@ -160,11 +162,17 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Monday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫Понеділок: " + content_list)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫Понеділок: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫Понеділок: " + content_list)
+
         except Exception as ex:
             await bot.send_message(id_user, "Щось пішло не так :(", reply_markup=Main)
         finally:
@@ -174,11 +182,17 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Tuesday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫Вівторок: " + content_list)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫Вівторок: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫Вівторок: " + content_list)
+
         except:
             await bot.send_message(id_user, "Щось пішло не так :(", reply_markup=Main)
         finally:
@@ -188,11 +202,17 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Wednesday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫Середа: " + content_list)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫Середа: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫Середа: " + content_list)
+
         except:
             await bot.send_message(id_user, "Щось пішло не так :(", reply_markup=Main)
         finally:
@@ -202,11 +222,17 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Thursday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫Четвер: " + content_list)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫Четвер: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫Четвер: " + content_list)
+
         except:
             await bot.send_message(id_user, "Щось пішло не так :(", reply_markup=Main)
         finally:
@@ -216,11 +242,16 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Friday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫П'ятниця: " + content_list)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫П'ятниця: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫П'ятниця: " + content_list)
 
         finally:
             self.connection.commit()
@@ -229,11 +260,17 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Saturday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫Субота: " + content_list)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫Субота: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫Субота: " + content_list)
+
         except:
             await bot.send_message(id_user, "Щось пішло не так :(", reply_markup=Main)
         finally:
@@ -243,11 +280,17 @@ class find_time():
         try:
             self.cursor.execute(f'''SELECT `Sunday` FROM `plan_table_bot` WHERE (id) = {id_user}''')
             content_list = self.cursor.fetchone()
+
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
             content_list = re.sub(r'([;])', '\n', str(content_list))
-            await bot.send_message(id_user, "▫Неділя: " + content_list, reply_markup=Main)
+
+            if content_list == 'None,':
+                await bot.send_message(id_user, "▫Неділя: ❌Ти не записав дані, або це просто помилка🤷")
+            else:
+                await bot.send_message(id_user, "▫Неділя: " + content_list)
+
         except:
             await bot.send_message(id_user, "Щось пішло не так :(", reply_markup=Main)
         finally:
