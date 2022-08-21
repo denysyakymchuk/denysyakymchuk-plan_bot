@@ -8,6 +8,7 @@ DATABASE = 'plan.db'
 db = find_time()
 db_add_user = find_time()
 
+
 statefile.register_handlers_admin(dp)
 statefile.register_handlers_admin2(dp)
 
@@ -60,22 +61,8 @@ async def text(message: types.Message):
         await bot.send_message(message.chat.id, '🆗OK', reply_markup=Main)
 
     elif message.text == 'po12.hqw34pn':
-        x = find_time()
-        if str(await x.chek_stan()) == '(1,)':
-            await bot.send_message(897892225, "1 przed wejściem")
-            await x.thrt_f()
-        else:
-            await bot.send_message(897892225, "0")
-
-    elif message.text == "change1":
-        c = find_time()
-        await bot.send_message(897892225, "1 wpisałem")
-        await c.add_stan(number=1)
-
-    elif message.text == "change0":
-        k = find_time()
-        await bot.send_message(897892225, "0 wpisałem")
-        await k.add_stan(number=0)
+        await bot.send_message(897892225, 'Zaczynam')
+        await find_time().thrt_f()
 
 
 executor.start_polling(dp, skip_updates=True)

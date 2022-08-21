@@ -65,22 +65,12 @@ class find_time():
 
     async def thrt_f(self):
         while True:
-            await asyncio.sleep(60)
             wremia = str(datetime.datetime.now())
             wremia = wremia[11:16]
 
-            if str(wremia) == '19:00':
+            if str(wremia) == '16:00':
                 await self.timing()
-
-    async def chek_stan(self):
-        with self.connection:
-            a = self.cursor.execute('''SELECT `stan` FROM `plan_table_bot` WHERE `id` LIKE 897892225 ''').fetchone()
-            return a
-
-    async def add_stan(self, number):
-        with self.connection:
-            self.cursor.execute(f'''UPDATE plan_table_bot SET stan = '{number}' WHERE id = 897892225''')
-
+            await asyncio.sleep(10)
 
     def start_user(self, id_user):
         with self.connection:
