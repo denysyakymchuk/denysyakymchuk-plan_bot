@@ -70,7 +70,7 @@ class find_time():
 
             if str(wremia) == '16:00':
                 await self.timing()
-            await asyncio.sleep(10)
+            await asyncio.sleep(60)
 
     def start_user(self, id_user):
         with self.connection:
