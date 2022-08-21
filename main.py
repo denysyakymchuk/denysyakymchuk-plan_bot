@@ -1,12 +1,9 @@
 import bot
-
 import statefile
 from statefile import *
 from keyboards import *
 
 DATABASE = 'plan.db'
-
-
 
 db = find_time()
 db_add_user = find_time()
