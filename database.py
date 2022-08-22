@@ -155,7 +155,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', ' ', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫Понеділок: ❌Ти не записав дані, або це просто помилка🤷")
@@ -175,7 +175,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', '', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫Вівторок: ❌Ти не записав дані, або це просто помилка🤷")
@@ -195,7 +195,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', '', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫Середа: ❌Ти не записав дані, або це просто помилка🤷")
@@ -215,7 +215,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', '', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫Четвер: ❌Ти не записав дані, або це просто помилка🤷")
@@ -235,7 +235,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', '', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫П'ятниця: ❌Ти не записав дані, або це просто помилка🤷")
@@ -253,7 +253,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', '', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫Субота: ❌Ти не записав дані, або це просто помилка🤷")
@@ -273,7 +273,7 @@ class find_time():
             content_list = re.sub(r'([()]*)', '', str(content_list))
             content_list = re.sub(r'([]]*)', '', str(content_list))
             content_list = re.sub(r"([']*)", "", str(content_list))
-            content_list = re.sub(r'([;])', '\n', str(content_list))
+            content_list = re.sub(r'([;])', '', str(content_list))
 
             if content_list == 'None,':
                 await bot.send_message(id_user, "▫Неділя: ❌Ти не записав дані, або це просто помилка🤷")
